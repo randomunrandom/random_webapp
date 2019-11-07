@@ -8,7 +8,8 @@
     "build": "webpack --config webpack.prod.js",
     "webpack:dev_server": "webpack-dev-server --config webpack.dev.js",
     "webpack:build:dev": "webpack --config webpack.dev.js",
-    "webpack:build:prod": "webpack --config webpack.prod.js"
+    "webpack:build:prod": "webpack --config webpack.prod.js",
+    "githubio": "pnpm run build; push-dir --dir dist --branch master --remote githubio --force --cleanup"
   },
   "author": "Danil Kireev",
   "license": "MIT",
