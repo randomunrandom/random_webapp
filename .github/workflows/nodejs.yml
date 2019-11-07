@@ -1,0 +1,45 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install, build (test in future) and deploy
+      env:
+        PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      run: |
+        npm install
+        npm run build
+        mkdir -p "$HOME/.ssh"
+        touch "$HOME/.ssh/known_hosts"
+
+        echo "$PRIVATE_KEY" > "$HOME/.ssh/deploy_key"
+
+        chmod 700 "$HOME/.ssh"
+        chmod 600 "$HOME/.ssh/known_hosts"
+        chmod 600 "$HOME/.ssh/deploy_key"
+
+        eval $(ssh-agent)
+        ssh-add "$HOME/.ssh/deploy_key"
+
+        ssh-keyscan -t rsa github.com >> "$HOME/.ssh/known_hosts"
+        
+        git config --global user.email "randomunrandom@yandex.ru"
+        git config --global user.name "Danil Kireev"
+        git remote add githubio git@github.com:randomunrandom/randomunrandom.github.io.git
+        
+        npx push-dir --dir dist --remote githubio --branch master --force
+
