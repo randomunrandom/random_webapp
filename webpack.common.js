@@ -105,12 +105,12 @@ const chalk = require('chalk');
             loader: 'postcss-loader',
             options: {
               ident: 'postcss',
-              plugins: (loader) => {
+              plugins: () => [
                 require('postcss-preset-env')({
                   stage: 1,
                   autoprefixer: true
                 })
-              }
+              ]
             }
           }
         ]
@@ -123,11 +123,11 @@ const chalk = require('chalk');
             loader: 'postcss-loader',
             options: {
               ident: 'postcss',
-              plugins: (loader) => {
+              plugins: () => [
                 require('postcss-preset-env')({
                   stage: 1
                 })
-              }
+              ]
             }
           }, {
             loader: 'sass-loader',
