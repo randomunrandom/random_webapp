@@ -6,14 +6,16 @@ const { VueLoaderPlugin } = require('vue-loader');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 // const postcssPresetEnv = require('postcss-preset-env');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const chalk = require('chalk');
 
  const common_config = {
   entry: {
     main: path.resolve(__dirname, 'src', 'index.ts'),
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    filename: '[name].[hash:8].js',
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'script/[name].[hash:8].js',
     publicPath: '/'
   },
   context: __dirname,
@@ -22,10 +24,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
     alias: {
       '@': path.resolve(__dirname, 'src'),
       '~': path.resolve(__dirname),
-      'locales': path.resolve(__dirname, 'src', 'locales'),
-      'components': path.resolve(__dirname, 'src', 'components'),
-      'pages': path.resolve(__dirname, 'src', 'pages'),
-      'middleware': path.resolve(__dirname, 'src', 'middleware'),
+      // 'locales': path.resolve(__dirname, 'src', 'locales'),
+      // 'components': path.resolve(__dirname, 'src', 'components'),
+      // 'pages': path.resolve(__dirname, 'src', 'pages'),
+      // 'middleware': path.resolve(__dirname, 'src', 'middleware')
     },
   },
   optimization: {
@@ -66,6 +68,25 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
             }
           }
         ],
+      // }, {
+        // test: /\.js$/,
+        // use: [
+          // 'cache-loader',
+          // {
+            // loader: "thread-loader",
+            // options: {
+              // workers: 2,
+              // workerParallelJobs: 2
+            // }
+          //},
+          // {
+            // loader: 'babel-loader',
+            // options: {
+              // cacheDirectory: true
+              // cacheDirectory: false
+            // }
+          // }
+        // ]
       }, {
         test: /\.pug$/,
         oneOf: [
@@ -129,8 +150,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
       template: path.resolve(__dirname, 'src', 'index.pug'),
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash:8].css',
-      chunkFilename: '[name]:[id].[contenthash:8].css'
+      filename: 'style/[name].[contenthash:8].css',
+      chunkFilename: 'style/[name]:[id].[contenthash:8].css'
+    }),
+    new ProgressBarPlugin({
+      format: 'progress: [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)',
+      clear: false,
+      summary: false
     })
   ]
 }
