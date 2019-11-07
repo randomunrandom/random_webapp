@@ -37,5 +37,5 @@ jobs:
 
         ssh-keyscan -t rsa github.com >> "$HOME/.ssh/known_hosts"
         
-        npx push-dir --dir dist --branch master --remote githubio
+        npx push-dir --dir dist --branch master --remote githubio --force
 
