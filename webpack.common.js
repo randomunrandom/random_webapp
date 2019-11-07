@@ -4,7 +4,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-// const postcssPresetEnv = require('postcss-preset-env');
+const postcssPresetEnv = require('postcss-preset-env');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const chalk = require('chalk');
@@ -101,31 +101,35 @@ const chalk = require('chalk');
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          // {
-            // loader: 'postcss-loader',
-            // options: {
-              // ident: 'postcss',
-              // plugins: () => [
-                // postcssPresetEnv({stage: 0})
-              // ]
-            // }
-          // }
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: (loader) => {
+                require('postcss-preset-env')({
+                  stage: 1,
+                  autoprefixer: true
+                })
+              }
+            }
+          }
         ]
       }, {
         test: /\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          // {
-            // loader: 'postcss-loader',
-            // options: {
-              // ident: 'postcss',
-              // plugins: () => [
-                // postcssPresetEnv({stage: 0})
-              // ]
-            // }
-          // },
           {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: (loader) => {
+                require('postcss-preset-env')({
+                  stage: 1
+                })
+              }
+            }
+          }, {
             loader: 'sass-loader',
             options: {
               implementation: require('sass'),
