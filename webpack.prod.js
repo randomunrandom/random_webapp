@@ -1,9 +1,9 @@
-import path from 'path';
-import merge from 'webpack-merge';
-import common_config from './webpack.common';
-import { default as OptimizeCSS } from 'optimize-css-assets-webpack-plugin';
-import TerserPlugin from 'terser-webpack-plugin';
-import { default as ScriptExt } from 'script-ext-html-webpack-plugin';
+const path = require('path');
+const merge = require('webpack-merge');
+const common_config = require('./webpack.common');
+const OptimizeCSS = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const ScriptExt = require('script-ext-html-webpack-plugin');
 
 const prod_config = merge.smart(common_config, {
   mode: 'production',
@@ -13,10 +13,10 @@ const prod_config = merge.smart(common_config, {
   },
   plugins: [
     new OptimizeCSS(),
-    new ScriptExt({
-      defaultAttribute: 'async',
-      prefetch: '*'
-    })
+    // new ScriptExt({
+      // defaultAttribute: 'async',
+      // prefetch: '*'
+    // })
   ]
 });
 
