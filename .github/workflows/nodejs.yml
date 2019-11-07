@@ -37,5 +37,8 @@ jobs:
 
         ssh-keyscan -t rsa github.com >> "$HOME/.ssh/known_hosts"
         
+        git config --global user.email "randomunrandom@yandex.ru"
+        git config --global user.name "Danil Kireev"
+        
         npx push-dir --dir dist --remote githubio --branch master --force --verbose
 
