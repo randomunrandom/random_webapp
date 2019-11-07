@@ -68,10 +68,9 @@ const chalk = require('chalk');
             }
           }
         ],
-      // }, {
-        // test: /\.js$/,
-        // use: [
-          // 'cache-loader',
+      }, {
+        test: /\.js$/,
+        use: [
           // {
             // loader: "thread-loader",
             // options: {
@@ -79,14 +78,14 @@ const chalk = require('chalk');
               // workerParallelJobs: 2
             // }
           //},
-          // {
-            // loader: 'babel-loader',
-            // options: {
-              // cacheDirectory: true
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true
               // cacheDirectory: false
-            // }
-          // }
-        // ]
+            }
+          }
+        ]
       }, {
         test: /\.pug$/,
         oneOf: [
