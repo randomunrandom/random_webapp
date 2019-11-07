@@ -23,6 +23,6 @@ jobs:
         npm run build
         ssh-add - <<< "${SSH_PRIVATE_KEY}"
         npm run githubio
-    - env:
+      env:
         CI: true
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }
