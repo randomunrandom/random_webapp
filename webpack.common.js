@@ -26,7 +26,7 @@ const chalk = require('chalk');
       '~': path.resolve(__dirname),
       // 'locales': path.resolve(__dirname, 'src', 'locales'),
       // 'components': path.resolve(__dirname, 'src', 'components'),
-      // 'pages': path.resolve(__dirname, 'src', 'pages'),
+      'pages': path.resolve(__dirname, 'src', 'pages'),
       // 'middleware': path.resolve(__dirname, 'src', 'middleware')
     },
   },
@@ -42,13 +42,13 @@ const chalk = require('chalk');
         }
       }
     }
-  }, 
+  },
   module: {
     rules: [
       {
         test: /\.vue$/,
         exclude: /node_modules/,
-        use: [ 
+        use: [
           // 'cache-loader',
           'vue-loader'
         ]

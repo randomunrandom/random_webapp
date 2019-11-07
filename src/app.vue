@@ -1,6 +1,8 @@
 <template lang="pug">
   div
-   h2 test
+    h2 app
+    router-link(to="/test") Go to Foo
+    router-view
 </template>
 
 <script lang="ts">
