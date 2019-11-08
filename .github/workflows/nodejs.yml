@@ -20,6 +20,7 @@ jobs:
     - name: npm install, build (test in future) and deploy
       env:
         PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        githubio: true
       run: |
         npm install
         npm run build
@@ -40,6 +41,5 @@ jobs:
         git config --global user.email "randomunrandom@yandex.ru"
         git config --global user.name "Danil Kireev"
         git remote add githubio git@github.com:randomunrandom/randomunrandom.github.io.git
-        export githubio=true
         npx push-dir --dir dist --remote githubio --branch master --force --verbose
 
