@@ -2,6 +2,10 @@ import i18n from "../middleware/i18n";
 
 const children: any[] = [
   {
+    // path: '', redirect: 'home'
+  // }, {
+    // path: 'index', redirect: 'home'
+  // }, {
       path: 'home',
       // name: 'home',
       component: () => import(/* webpackChunkName: "home" */ "pages/Home.vue")

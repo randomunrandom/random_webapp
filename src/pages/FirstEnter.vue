@@ -13,11 +13,11 @@ export default class FirstEnter extends Vue {
   redirect(lang: string): void {
     switch(lang) {
       case 'en-US': {
-        this.$router.push('/en/')
+        this.$router.push('/en/'+'home')
         break;
       }
       default: {
-        this.$router.push('/ru/')
+        this.$router.push('/ru/'+'home')
         break;
       }
     }
