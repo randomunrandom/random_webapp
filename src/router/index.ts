@@ -7,7 +7,7 @@ Vue.use(Router);
 const router = new Router({
   mode: process.env.githubio === 'true' ? 'hash': 'history',
   base: '/',
-  scrollBehavior (to: any, from: any, savedPosition: any) {
+  scrollBehavior(to: any, from: any, savedPosition: any): any {
     if (savedPosition) {
       return savedPosition
     } else if (to.hash) {

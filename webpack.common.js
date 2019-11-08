@@ -1,45 +1,45 @@
-const path = require('path')
-const webpack = require('webpack')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { VueLoaderPlugin } = require('vue-loader');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const postcssPresetEnv = require('postcss-preset-env');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-const chalk = require('chalk');
+const path = require("path");
+const webpack = require("webpack");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { VueLoaderPlugin } = require("vue-loader");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const postcssPresetEnv = require("postcss-preset-env");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ProgressBarPlugin = require("progress-bar-webpack-plugin");
+const chalk = require("chalk");
 
- const common_config = {
+const common_config = {
   entry: {
-    main: path.resolve(__dirname, 'src', 'index.ts'),
+    main: path.resolve(__dirname, "src", "index.ts")
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'script/[name].[hash:8].js',
-    publicPath: '/'
+    path: path.resolve(__dirname, "dist"),
+    filename: "script/[name].[hash:8].js",
+    publicPath: "/"
   },
   context: __dirname,
   resolve: {
-    extensions: [ '.vue', '.js', '.ts', '.json', '.json5', '.yaml' ],
+    extensions: [".vue", ".js", ".ts", ".json", ".json5", ".yaml"],
     alias: {
-      '@': path.resolve(__dirname, 'src'),
-      '~': path.resolve(__dirname),
-      // 'locales': path.resolve(__dirname, 'src', 'locales'),
-      // 'components': path.resolve(__dirname, 'src', 'components'),
-      'pages': path.resolve(__dirname, 'src', 'pages'),
-      // 'middleware': path.resolve(__dirname, 'src', 'middleware')
-    },
+      "@": path.resolve(__dirname, "src"),
+      "~": path.resolve(__dirname),
+      'components': path.resolve(__dirname, 'src', 'components'),
+      'pages': path.resolve(__dirname, "src", "pages"),
+      'middleware': path.resolve(__dirname, 'src', 'middleware'),
+      'locales': path.resolve(__dirname, 'src', 'locales')
+    }
   },
   optimization: {
-    moduleIds: 'hashed',
-    runtimeChunk: 'single',
+    moduleIds: "hashed",
+    runtimeChunk: "single",
     splitChunks: {
       cacheGroups: {
         vendor: {
           test: /node_modules/,
-          name: 'vendors',
-          chunks: 'all'
+          name: "vendors",
+          chunks: "all"
         }
       }
     }
@@ -49,65 +49,46 @@ const chalk = require('chalk');
       {
         test: /\.vue$/,
         exclude: /node_modules/,
-        use: [
-          // 'cache-loader',
-          'vue-loader'
-        ]
-      }, {
+        use: ["cache-loader", "vue-loader"]
+      },
+      {
         test: /\.tsx?$/,
-        use: [
-          {
-            // loader: "thread-loader",
-            // options: {
-              // workers: 2,
-            // }
-          // }, {
-            loader: 'ts-loader',
-            options: {
-              transpileOnly: true,
-              appendTsSuffixTo: [/\.vue$/]
-            }
-          }
-        ],
-      }, {
+        loader: "ts-loader",
+        options: {
+          transpileOnly: true,
+          appendTsSuffixTo: [/\.vue$/]
+        }
+      },
+      {
         test: /\.js$/,
-        use: [
-          // {
-            // loader: "thread-loader",
-            // options: {
-              // workers: 2,
-              // workerParallelJobs: 2
-            // }
-          //},
-          {
-            loader: 'babel-loader',
-            options: {
-              cacheDirectory: true
-              // cacheDirectory: false
-            }
-          }
-        ]
-      }, {
+        loader: "babel-loader",
+        options: {
+          cacheDirectory: true
+        }
+      },
+      {
         test: /\.pug$/,
         oneOf: [
           {
             resourceQuery: /vue/,
-            use: [ 'pug-plain-loader' ]
-          }, {
-            use: [ 'html-loader', 'pug-plain-loader' ]
+            use: ["pug-plain-loader"]
+          },
+          {
+            use: ["html-loader", "pug-plain-loader"]
           }
         ]
-      }, {
+      },
+      {
         test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader',
+          "css-loader",
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
-              ident: 'postcss',
+              ident: "postcss",
               plugins: () => [
-                require('postcss-preset-env')({
+                require("postcss-preset-env")({
                   stage: 1,
                   autoprefixer: true
                 })
@@ -115,31 +96,42 @@ const chalk = require('chalk');
             }
           }
         ]
-      }, {
+      },
+      {
         test: /\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader',
+          "css-loader",
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
-              ident: 'postcss',
+              ident: "postcss",
               plugins: () => [
-                require('postcss-preset-env')({
+                require("postcss-preset-env")({
                   stage: 1
                 })
               ]
             }
-          }, {
-            loader: 'sass-loader',
+          },
+          {
+            loader: "sass-loader",
             options: {
-              implementation: require('sass'),
+              implementation: require("sass"),
               sassOptions: {
-                fiber: require('fibers'),
-              },
+                fiber: require("fibers")
+              }
             }
           }
         ]
+      },
+      {
+        test: /\.yaml$/,
+        exclude: /node_modules/,
+        use: ["json5-loader", "yaml-loader"]
+      },
+      {
+        test: /\.json5?$/,
+        loader: "json5-loader"
       }
     ]
   },
@@ -147,18 +139,19 @@ const chalk = require('chalk');
     new CleanWebpackPlugin(),
     new VueLoaderPlugin(),
     new ForkTsCheckerWebpackPlugin(),
-    new CopyPlugin([
-      { from: 'static', to: '.' },
-    ]),
+    new CopyPlugin([{ from: "static", to: "." }]),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'src', 'index.pug'),
+      template: path.resolve(__dirname, "src", "index.pug")
     }),
     new MiniCssExtractPlugin({
-      filename: 'style/[name].[contenthash:8].css',
-      chunkFilename: 'style/[name]:[id].[contenthash:8].css'
+      filename: "style/[name].[contenthash:8].css",
+      chunkFilename: "style/[name]:[id].[contenthash:8].css"
     }),
     new ProgressBarPlugin({
-      format: 'progress: [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)',
+      format:
+        "progress: [:bar] " +
+        chalk.green.bold(":percent") +
+        " (:elapsed seconds)",
       clear: false,
       summary: false
     }),
@@ -166,6 +159,6 @@ const chalk = require('chalk');
       githubio: false
     })
   ]
-}
+};
 
-module.exports = common_config
+module.exports = common_config;
