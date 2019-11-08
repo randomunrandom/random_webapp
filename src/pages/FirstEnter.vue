@@ -10,8 +10,20 @@ import Component from 'vue-class-component';
 @Component({})
 export default class FirstEnter extends Vue {
   userLang: string = navigator.language;
+  redirect(lang: string): void {
+    switch(lang) {
+      case 'en-US': {
+        this.$router.push('/en/')
+        break;
+      }
+      default: {
+        this.$router.push('/ru/')
+        break;
+      }
+    }
+  }
   mounted() {
-    console.log('first enter / root');
+    this.redirect(this.userLang);
   }
 }
 </script>
