@@ -41,5 +41,5 @@ jobs:
         git config --global user.name "Danil Kireev"
         git remote add githubio git@github.com:randomunrandom/randomunrandom.github.io.git
         
-        npx push-dir --dir dist --remote githubio --branch master --force
+        npx push-dir --dir dist --remote githubio --branch master --force --verbose
 
