@@ -1,17 +1,18 @@
 <template lang="pug">
   div
    h2 test
-   p {{aaa}}
    button(@click='test()') test
+   display {{"\t" + clicks}}
 </template>
 
 <script>
 export default {
   data() {return{
-    aaa: "AAAA"
+    clicks: 0
   }},
   methods: {
     test() {
+      this.clicks += 1
       class dog {
         constructor(name) {
           this.name = name;
