@@ -36,7 +36,13 @@ const routes: any = [
     beforeEnter(to: any, from: any, next: Function): Function {
       if (!('en' in i18n.messages)) {
         import('locales/en.yaml').then((messages: any): void => {
-          i18n.setLocaleMessage('en', messages);
+          let res: any = {}
+          for(let message in messages) {
+            if (message !== 'default') {
+              res[message] = messages[message];
+            }
+          }
+          i18n.setLocaleMessage('en', res);
         });
       }
       i18n.locale = 'en';
