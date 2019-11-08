@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -160,6 +161,9 @@ const chalk = require('chalk');
       format: 'progress: [:bar] ' + chalk.green.bold(':percent') + ' (:elapsed seconds)',
       clear: false,
       summary: false
+    }),
+    new webpack.EnvironmentPlugin({
+      githubio: false
     })
   ]
 }

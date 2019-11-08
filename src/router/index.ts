@@ -5,7 +5,7 @@ import routes from './routes';
 Vue.use(Router);
 
 const router = new Router({
-  mode: 'hash',
+  mode: process.env.githubio === 'true' ? 'hash': 'history',
   base: '/',
   scrollBehavior (to: any, from: any, savedPosition: any) {
     if (savedPosition) {
