@@ -139,7 +139,10 @@ const common_config = {
     new CleanWebpackPlugin(),
     new VueLoaderPlugin(),
     new ForkTsCheckerWebpackPlugin(),
-    new CopyPlugin([{ from: "static", to: "." }]),
+    new CopyPlugin([
+      { from: "static", to: "." },
+      { from: "./README.md", to: "." }
+    ]),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src", "index.pug")
     }),
