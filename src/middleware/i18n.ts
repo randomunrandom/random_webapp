@@ -7,7 +7,7 @@ Vue.use(VueI18n);
 const i18n = new VueI18n({
   locale: "ru",
   fallbackLocale: "ru",
-  messages: {ru},
+  messages: { ru },
   missing: (locale: string, key: string) => {
     console.log(`translation missing: locale=${locale}, key=${key}`);
   }

@@ -16,7 +16,7 @@ const router = new Router({
         // , offset: { x: 0, y: 10 }
       };
     } else {
-      return {x: 0, y: 0};
+      return { x: 0, y: 0 };
     }
   },
   routes

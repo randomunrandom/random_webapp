@@ -14,10 +14,9 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npx prettier --ignore-path './.gitignore' --write -c './**/*.{ts,js,vue,yaml,json}'",
+      "pre-commit": "npx prettier --ignore-path './.gitignore' --write -c './**/*.{ts,js,vue,yaml,json}'"
     }
   },
-
   "author": "Danil Kireev",
   "license": "MIT",
   "dependencies": {
