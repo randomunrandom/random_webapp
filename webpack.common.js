@@ -1,9 +1,9 @@
 const path = require("path");
 const webpack = require("webpack");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { VueLoaderPlugin } = require("vue-loader");
+const {VueLoaderPlugin} = require("vue-loader");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const postcssPresetEnv = require("postcss-preset-env");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -25,10 +25,10 @@ const common_config = {
     alias: {
       "@": path.resolve(__dirname, "src"),
       "~": path.resolve(__dirname),
-      'components': path.resolve(__dirname, 'src', 'components'),
-      'pages': path.resolve(__dirname, "src", "pages"),
-      'middleware': path.resolve(__dirname, 'src', 'middleware'),
-      'locales': path.resolve(__dirname, 'src', 'locales')
+      "components": path.resolve(__dirname, "src", "components"),
+      "pages": path.resolve(__dirname, "src", "pages"),
+      "middleware": path.resolve(__dirname, "src", "middleware"),
+      "locales": path.resolve(__dirname, "src", "locales")
     }
   },
   optimization: {
@@ -139,7 +139,7 @@ const common_config = {
     new CleanWebpackPlugin(),
     new VueLoaderPlugin(),
     new ForkTsCheckerWebpackPlugin(),
-    new CopyPlugin([{ from: "static", to: "." }]),
+    new CopyPlugin([{from: "static", to: "."}]),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src", "index.pug")
     }),

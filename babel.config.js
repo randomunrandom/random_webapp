@@ -7,8 +7,6 @@ const presets = [
   ]
 ];
 
-const plugins = [
+const plugins = [];
 
-]
-
-module.exports = { presets, plugins }
+module.exports = {presets, plugins};

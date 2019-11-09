@@ -1,12 +1,12 @@
-const path = require('path');
-const merge = require('webpack-merge');
-const common_config = require('./webpack.common');
+const path = require("path");
+const merge = require("webpack-merge");
+const common_config = require("./webpack.common");
 
 const dev_config = merge.smart(common_config, {
-  mode: 'development',
-  devtool: 'eval-source-map',
+  mode: "development",
+  devtool: "eval-source-map",
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, "dist"),
     // compress: true,
     historyApiFallback: true,
     hot: true,
@@ -15,8 +15,7 @@ const dev_config = merge.smart(common_config, {
     overlay: true,
     https: false
   },
-  plugins: [
-  ]
+  plugins: []
 });
 
-module.exports = dev_config
+module.exports = dev_config;
