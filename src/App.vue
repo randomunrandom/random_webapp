@@ -1,5 +1,5 @@
 <template lang="pug">
-  app
+  v-app
     div
       h2 app
       p {{$i18n.messages}}
