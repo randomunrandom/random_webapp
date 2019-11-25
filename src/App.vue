@@ -60,7 +60,7 @@
 <script lang="ts">
   import Vue from "vue";
   import Component from "vue-class-component";
-  import { mdiHome, mdiAccountSupervisorCircle, mdiClockStart } from '@mdi/js'
+  import { mdiHome, mdiAccountSupervisorCircle, mdiClockStart } from "@mdi/js";
 
   interface LocaleSetting {
     locale: string;
@@ -77,10 +77,10 @@
     drawer: Boolean = true;
     // drawer_colapsed: Boolean = false
     navItems: NavigationItem[] = [
-      {icon: mdiHome, name: 'Home', link: 'home'},
-      {icon: mdiAccountSupervisorCircle, name: 'About', link: 'about'},
+      { icon: mdiHome, name: "Home", link: "home" },
+      { icon: mdiAccountSupervisorCircle, name: "About", link: "about" }
       // {icon: mdiClockStart, name: 'Clock-in', link: ''},
-    ]
+    ];
 
     locales: LocaleSetting[] = [
       {
@@ -117,6 +117,6 @@
 
 <style lang="scss" scoped>
   #app {
-    background: linear-gradient(pink, lightblue)
+    background: linear-gradient(pink, lightblue);
   }
 </style>
