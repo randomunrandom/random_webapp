@@ -123,7 +123,8 @@ const common_config = {
             }
           }
         ]
-      },{
+      },
+      {
         test: /\.sass$/,
         use: [
           MiniCssExtractPlugin.loader,
