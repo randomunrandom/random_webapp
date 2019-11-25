@@ -1,4 +1,4 @@
-import i18n from "../middleware/i18n";
+import i18n from "../plugins/i18n";
 
 const children: any[] = [
   {

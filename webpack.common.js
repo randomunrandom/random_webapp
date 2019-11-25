@@ -27,7 +27,7 @@ const common_config = {
       "~": path.resolve(__dirname),
       "components": path.resolve(__dirname, "src", "components"),
       "pages": path.resolve(__dirname, "src", "pages"),
-      "middleware": path.resolve(__dirname, "src", "middleware"),
+      "plugins": path.resolve(__dirname, "src", "plugins"),
       "locales": path.resolve(__dirname, "src", "locales")
     }
   },
@@ -119,6 +119,33 @@ const common_config = {
               implementation: require("sass"),
               sassOptions: {
                 fiber: require("fibers")
+              }
+            }
+          }
+        ]
+      },{
+        test: /\.sass$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          {
+            loader: "postcss-loader",
+            options: {
+              ident: "postcss",
+              plugins: () => [
+                require("postcss-preset-env")({
+                  stage: 1
+                })
+              ]
+            }
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              implementation: require("sass"),
+              sassOptions: {
+                fiber: require("fibers"),
+                indentedSyntax: true
               }
             }
           }
