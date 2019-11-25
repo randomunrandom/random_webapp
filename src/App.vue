@@ -1,22 +1,23 @@
 <template lang="pug">
-  div
-    h2 app
-    p {{$i18n.messages}}
-    p {{diff_locales}}
-    p {{available_locales}}
-    select
-      option(
-        v-for="(lang, i) in diff_locales"
-        :key="i"
-        :value="lang['locale']"
-        @click="change_lang(lang['locale'])"
-        ) {{ lang["name"] }}
-    p
-      router-link(to="home") Go to Home
-    p
-      router-link(to="about") Go to About
-    p {{$t('hello')}}
-    router-view
+  app
+    div
+      h2 app
+      p {{$i18n.messages}}
+      p {{diff_locales}}
+      p {{available_locales}}
+      select
+        option(
+          v-for="(lang, i) in diff_locales"
+          :key="i"
+          :value="lang['locale']"
+          @click="change_lang(lang['locale'])"
+          ) {{ lang["name"] }}
+      p
+        router-link(to="home") Go to Home
+      p
+        router-link(to="about") Go to About
+      p {{$t('hello')}}
+      router-view
 </template>
 
 <script lang="ts">
