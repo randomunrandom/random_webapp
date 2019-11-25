@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader");
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const postcssPresetEnv = require("postcss-preset-env");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -166,6 +167,9 @@ const common_config = {
   plugins: [
     new CleanWebpackPlugin(),
     new VueLoaderPlugin(),
+    new VuetifyLoaderPlugin({
+      progressiveImages: true
+    }),
     new ForkTsCheckerWebpackPlugin(),
     new CopyPlugin([
       { from: "static", to: "." },
