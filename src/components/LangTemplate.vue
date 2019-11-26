@@ -1,6 +1,7 @@
 <template lang="pug">
   div
-    router-view
+    v-scroll-x-transition(mode='out-in')
+      router-view
 </template>
 
 <script lang="ts">
