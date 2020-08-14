@@ -1,4 +1,10 @@
-/node_modules/
-/public/build/
+# IDE folders
+.vscode
+.idea
 
-.DS_Store
+# folders
+node_modules/
+dist/
+
+# cache files
+pnpm-lock.yaml
