@@ -1,0 +1,40 @@
+{
+  "name": "random_webapp",
+  "version": "0.0.1",
+  "description": "my website/CV",
+  "main": "src/index.pug",
+  "scripts": {
+    "build": "webpack --config webpack.prod.js",
+    "dev": "webpack-dev-server --config webpack.dev.js",
+    "webpack:dev_server": "webpack-dev-server --config webpack.dev.js",
+    "webpack:build:dev": "webpack --config webpack.dev.js",
+    "webpack:build:prod": "webpack --config webpack.prod.js"
+  },
+  "author": "Danil Kireev",
+  "license": "MIT",
+  "dependencies": {
+    "pug": "^2.0.4",
+    "sass": "^1.23.7",
+    "webpack": "^4.41.2"
+  },
+  "devDependencies": {
+    "chalk": "^4.1.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^4.2.1",
+    "fiber": "^1.0.4",
+    "fibers": "^5.0.0",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.3.0",
+    "json5-loader": "^4.0.0",
+    "mini-css-extract-plugin": "^0.10.0",
+    "postcss-loader": "^3.0.0",
+    "progress-bar-webpack-plugin": "^2.1.0",
+    "pug-plain-loader": "^1.0.0",
+    "sass-loader": "^9.0.3",
+    "tailwindcss": "^1.6.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^4.2.2",
+    "yaml-loader": "^0.5.0"
+  }
+}
